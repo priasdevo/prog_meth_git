@@ -11,7 +11,6 @@ import shareObject.StageIndex;
 import javafx.fxml.*;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
-import javafx.scene.control.Button;
 import javafx.scene.media.AudioClip;
 //Fx
 
@@ -41,6 +40,7 @@ public class Mainapp extends Application{
 		
 		mainStage.show();
 		AnimationTimer animation = new AnimationTimer() {
+			@Override
 			public void handle(long now) {
 				nowStage = StageIndex.getInstance().getstageIndex();
 				switch(nowStage) {
@@ -92,7 +92,7 @@ public class Mainapp extends Application{
 				System.out.println("test");
 				scene = new Scene(root);
 				mainStage.setScene(scene);
-				mainStage.setTitle("Testing");
+				mainStage.setTitle("GITTEST");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

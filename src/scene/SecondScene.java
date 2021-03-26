@@ -1,21 +1,18 @@
 package scene;
 
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseButton;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import shareObject.FirstSceneObjectHolder;
 import shareObject.SecondSceneObjectHolder;
 
@@ -42,6 +39,12 @@ public class SecondScene extends Canvas{
 				content.putString(card1.getImage().toString());
 				db.setContent(content);
 				System.out.print("Test");
+			}
+		});
+		card1.setOnDragDone(new EventHandler<DragEvent>(){
+			@Override
+			public void handle(DragEvent arg0) {
+				SecondSceneObjectHolder.getInstance().setIsDragging(false);
 			}
 		});
 

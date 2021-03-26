@@ -4,7 +4,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import application.Mainapp;
 import shareObject.StageIndex;
 public class FirstSceneController{
 	@FXML
