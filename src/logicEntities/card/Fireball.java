@@ -5,6 +5,7 @@ import gameLogic.GameLogic;
 import gameLogic.action.AttackAction;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import logicEntities.Player;
 import logicEntities.base.Card;
 import logicEntities.base.Monster;
 import logicEntities.base.cardType.hasTarget;
@@ -22,8 +23,13 @@ public class Fireball extends Card implements hasTarget{
 	}
 	@Override
 	public void use() {
-		GameLogic.getActionManager().add( new AttackAction("Single",target.getMonster_id(),attack_power) );
-		CardManager.disCard(this);
+		if(Player.getInstance().getMana()>=this.manacost) {
+			GameLogic.getActionManager().add( new AttackAction("Single",target.getMonster_id(),attack_power) );
+			CardManager.disCard(this);
+			Player.getInstance().setMana(Player.getInstance().getMana()-this.manacost);
+			Player.getInstance().updateMana();
+		}
+		
 	}
 	@Override
 	public void setTarget(Monster monster) {

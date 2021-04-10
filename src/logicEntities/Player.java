@@ -1,13 +1,18 @@
 package logicEntities;
 import gameLogic.GameLogic;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import logicEntities.base.Affinity;
+import shareObject.GameConfig;
 public class Player {
 	private static final Player instance = new Player();
 	private int hp;
@@ -21,6 +26,7 @@ public class Player {
 	private Affinity affinity;
 	private HBox statBar;
 	private Label current_hp;
+	private Label mana_GUI;
 	{
 		initBasicPlayer();
 	}
@@ -42,6 +48,7 @@ public class Player {
 	public void initBasicPlayer() {
 		this.statBar = new HBox();
 		this.current_hp = new Label();
+		this.mana_GUI = new Label();
 		this.hp = 100;
 		this.hp_max = 100;
 		this.mana = 100;
@@ -52,12 +59,27 @@ public class Player {
 		this.baseLevel = 1;
 		this.affinity = new Affinity(1,1,1,1,1,1,1);
 		this.setupStatBar();
+		this.setupManacrystal();
 	}
 	public void setupStatBar() {
 		this.statBar.setBackground(new Background(new BackgroundFill(Color.LIGHTGOLDENRODYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
 		this.current_hp.setText(Integer.toString(hp)+"/"+Integer.toString(hp_max));
 		GameLogic.getGrid().add(statBar, 0, 0,16,1);
 		this.statBar.getChildren().add(current_hp);
+	}
+	public void setupManacrystal() {
+		ImageView manacrytal = new ImageView(new Image(ClassLoader.getSystemResource("secondScene/images/Mana_crystal.png").toString()));
+		manacrytal.setFitHeight(GameConfig.screenHeight/16+10);
+		manacrytal.setFitWidth(GameConfig.screenWidth/16);
+		this.mana_GUI.setGraphic( manacrytal);
+		this.mana_GUI.setText(Integer.toString(mana)+"/"+Integer.toString(mana_max));
+		this.mana_GUI.setContentDisplay(ContentDisplay.CENTER);
+		////this.mana_GUI.setMaxHeight(40);
+		//this.mana_GUI.setMaxWidth(40);
+		GameLogic.getGrid().add(mana_GUI, 1, 10);
+	}
+	public void updateMana() {
+		this.mana_GUI.setText(Integer.toString(mana)+"/"+Integer.toString(mana_max));
 	}
 	public void updateHp() {
 		this.current_hp.setText(Integer.toString(hp)+"/"+Integer.toString(hp_max));
