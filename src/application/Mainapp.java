@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 
+import gameLogic.GameLogic;
 //Fx import
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -12,6 +13,7 @@ import javafx.fxml.*;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.AudioClip;
+import shareObject.GameConfig;
 //Fx
 
 public class Mainapp extends Application{
@@ -19,8 +21,8 @@ public class Mainapp extends Application{
 	int nowStage;
 	Scene scene;
 	AudioClip sound;
-	FirstScene firstScene = new FirstScene(1024,640);
-	SecondScene secondScene = new SecondScene(1024,640);
+	FirstScene firstScene = new FirstScene(GameConfig.screenWidth,GameConfig.screenHeight);
+	SecondScene secondScene = new SecondScene(GameConfig.screenWidth,GameConfig.screenHeight);
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		launch(args);
@@ -37,7 +39,7 @@ public class Mainapp extends Application{
 		mainStage.setTitle("The jouney of magic card master");
 		// to be fix
 		root.getChildren().add(firstScene);
-		
+		mainStage.setResizable(false);
 		mainStage.show();
 		AnimationTimer animation = new AnimationTimer() {
 			@Override
@@ -73,6 +75,7 @@ public class Mainapp extends Application{
 				scene = new Scene(root);
 				mainStage.setScene(scene);
 				mainStage.setTitle("The jouney of magic card master");
+				GameLogic.setScene(scene);
 				
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -93,6 +96,7 @@ public class Mainapp extends Application{
 				scene = new Scene(root);
 				mainStage.setScene(scene);
 				mainStage.setTitle("GITTEST");
+				GameLogic.setScene(scene);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

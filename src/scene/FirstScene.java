@@ -1,5 +1,6 @@
 package scene;
 
+import gameLogic.GameLogic;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -19,6 +20,7 @@ public class FirstScene extends Canvas{
 	}
 	public void setScreen(Scene scene) {
 		Canvas canvas = (Canvas) scene.lookup("#firstCanvas");
+		GameLogic.setRoot(scene.lookup("#rootpane"));
 		//Button testbutt = (Button) scene.lookup("#StartButt");
 		//testbutt.getText();
 		GraphicsContext gc = canvas.getGraphicsContext2D();

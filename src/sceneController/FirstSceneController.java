@@ -2,7 +2,12 @@ package sceneController;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.util.Duration;
+import gameLogic.GameLogic;
+import javafx.animation.FadeTransition;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import shareObject.StageIndex;
 public class FirstSceneController{
@@ -20,6 +25,15 @@ public class FirstSceneController{
 		Platform.exit();
 	}
 	public void startScene() {
+		FadeTransition ft = new FadeTransition(Duration.millis(1000), GameLogic.getRoot());
+	     ft.setFromValue(1.0);
+	     ft.setToValue(0.1);
+	     ft.setOnFinished(e -> changeScene());
+	     ft.play();
+		//System.out.print("Clicked");
+		//StageIndex.getInstance().setstageIndex(1);
+	}
+	public void changeScene() {
 		System.out.print("Clicked");
 		StageIndex.getInstance().setstageIndex(1);
 	}

@@ -1,4 +1,4 @@
-package shareObject;
+package logicEntities;
 import logicEntities.base.Affinity;
 public class Player {
 	private static final Player instance = new Player();
