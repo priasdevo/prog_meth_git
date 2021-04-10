@@ -18,6 +18,7 @@ public class SecondScene extends Canvas{
 		addListener();
 	}
 	public void init(Scene scene) {
+		GameLogic.setRoot(scene.lookup("#rootpane"));
 		GameLogic.setGrid((GridPane) scene.lookup("#grid"));
 		GameLogic.setCardBox( (HBox) scene.lookup("#cardBox") );
 		GameLogic.init();
@@ -29,7 +30,10 @@ public class SecondScene extends Canvas{
 		
 	}
 	public void setScreen(Scene scene) {
-		GameLogic.runAction();
+		if(GameLogic.getActionManager().getActionList().size()!=0) {
+			GameLogic.runAction();
+		}
+		
 		Canvas canvas = (Canvas) scene.lookup("#SecondSceneBackground");
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		//gc.setFill(Color.BLACK);

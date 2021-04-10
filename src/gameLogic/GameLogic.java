@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import logicEntities.Player;
 import logicEntities.base.Monster;
 import logicEntities.base.cardType.hasTarget;
 public class GameLogic {
@@ -24,21 +25,10 @@ public class GameLogic {
 			GameLogic.actionManager = new ActionManager();
 			GameLogic.monsterManager = new MonsterManager();
 			GameLogic.cardManager = new CardManager();
+			Player.getInstance();
 		}
 		public static void runAction() {
-			for(ActionBase action: GameLogic.actionManager.getActionList()) {
-				if(action instanceof AttackAction) {
-					ActionHandler.attackTarget(((AttackAction) action).getDamage(), action.getTargetId());
-				}
-				
-			}
-			GameLogic.getActionManager().clear();
-			try {
-				GameLogic.getMonsterManager().clearMonster();
-			}
-			catch(ConcurrentModificationException e){
-				
-			}
+			actionManager.runAction();
 			
 		}
 		public static void addAction(Monster monster) {
@@ -50,7 +40,7 @@ public class GameLogic {
 		}
 		public static void endTurn() {
 			CardManager.discard_all();
-			MonsterManager.attackTurn();
+			GameLogic.getMonsterManager().monsterAction();
 			System.out.println("monster_attack");
 			// Start New Turn
 			

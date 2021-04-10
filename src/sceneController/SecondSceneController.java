@@ -51,7 +51,7 @@ public class SecondSceneController {
 			}
 		});
 		GameLogic.setEndTurnButton(endTurnButton);
-		statBar.setBackground(new Background(new BackgroundFill(Color.LIGHTGOLDENRODYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
+		
 	}
 	public void endTurn() {
 	System.out.println("Endturn");

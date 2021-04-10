@@ -1,4 +1,6 @@
 package logicEntities.Monsters;
+import gameLogic.GameLogic;
+import gameLogic.action.AttackAction;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -34,25 +36,15 @@ public class Slime extends Monster{
 		this.monster_ob.setFitHeight(monster_height);
 		this.monster_ob.setFitWidth(monster_width);
 		this.monster_ob.setImage(moster_image);
-		//this.monster_ob = new ImageView();
 		this.updateHp();
 		this.monster_box.setAlignment(Pos.CENTER);
-		/*ImageView test_ob = new ImageView();
-		test_ob.setFitHeight(40);
-		test_ob.setFitWidth(64);
-		test_ob.setImage(moster_image);
-		Pane test_pane = new Pane();
-		test_pane.getChildren().add(test_ob);
-		test_pane.setBorder(new Border(new BorderStroke(Color.BLACK, 
-	            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-		System.out.println(test_pane.getPrefHeight()+test_pane.getPrefWidth());*/
 		this.monster_box.getChildren().addAll(this.monster_ob,this.monster_hp_bar);
 		
 		}
 	
 	@Override
 	public void action() {
-		
+		GameLogic.getActionManager().add(new AttackAction("Single","Player",5));
 		// TODO Auto-generated method stub
 		
 	}
