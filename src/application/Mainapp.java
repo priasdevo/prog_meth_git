@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.AudioClip;
 import shareObject.GameConfig;
+import shareObject.GameSaved;
 //Fx
 
 public class Mainapp extends Application{
@@ -33,6 +34,8 @@ public class Mainapp extends Application{
 		StageIndex.getInstance().setstageIndex(0);
 		nowStage = StageIndex.getInstance().getstageIndex();
 		// TODO Auto-generated method stub
+		
+		
 		StackPane root = new StackPane();
 		scene = new Scene(root);
 		mainStage.setScene(scene);
