@@ -8,10 +8,15 @@ public class GameSaved {
 	private final static Preferences prefs = Preferences.userRoot().node(GameSaved.class.getName());
 	private static int player_level;
 	private static String player_name;
+	private static int sound_level;
+	static {
+		init();
+	}
 	public static void init() {
 		GameSaved.openTime = prefs.getInt("openTime",0);
 		GameSaved.player_level = prefs.getInt("playerLevel",1);
-		GameSaved.player_name = prefs.get(player_name, "null");
+		GameSaved.player_name = prefs.get("playerName", null);
+		GameSaved.sound_level = prefs.getInt("soundLevel", 70);
 	}
 	public static int getOpenTime() {
 		return openTime;
@@ -47,6 +52,13 @@ public class GameSaved {
 	public static void setPlayer_name(String player_name) {
 		GameSaved.player_name = player_name;
 		prefs.put("playerName", player_name);
+	}
+	public static int getSound_level() {
+		return sound_level;
+	}
+	public static void setSound_level(int sound_level) {
+		GameSaved.sound_level = sound_level;
+		prefs.putInt("soundLevel", sound_level);
 	}
 	
 }

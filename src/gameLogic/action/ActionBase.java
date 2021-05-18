@@ -9,6 +9,10 @@ public abstract class ActionBase {
 		this.targetType = targetType;
 		this.targetId = targetId;
 	}
+	public ActionBase(String targetType) {
+		super();
+		this.targetType = targetType;
+	}
 	public String getTargetType() {
 		return targetType;
 	}
