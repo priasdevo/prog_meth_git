@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import logicEntities.base.CardTemplate;
 import scene.*;
 import shareObject.StageIndex;
 import javafx.fxml.*;
@@ -122,6 +123,9 @@ public class Mainapp extends Application{
 				scene = new Scene(root);
 				mainStage.setScene(scene);
 				mainStage.setTitle("The jouney of magic card master");
+				/*Test*/
+				root.getChildren().add(new CardTemplate());
+				/*Test*/
 				GameLogic.setScene(scene);
 				
 			} catch (IOException e) {
