@@ -2,11 +2,11 @@ package gameLogic.statusEffect;
 
 import logicEntities.base.Card;
 
-public abstract class CardUseApplyStatusEffect extends StatusEffectBase{
-
-	public CardUseApplyStatusEffect(String name) {
-		super(3, name);
-		// TODO Auto-generated constructor stub
-	}
+/**
+ * @author Napat
+ * The statusEffect that activate when cardUse action is being handle
+ */
+public interface CardUseApplyStatusEffect{
+	static final int statusType = 3;
 	public abstract void Activate(Card cardUsed);
 }

@@ -1,5 +1,6 @@
 package logicEntities.base;
 
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
@@ -8,6 +9,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
+/**
+ * @author Napat
+ * Base template for monster
+ */
 public abstract class Monster {
 	protected String name;
 	protected String monster_id;
@@ -34,14 +39,24 @@ public abstract class Monster {
 		this.monster_ob = new ImageView();
 		this.monster_box.setSpacing(1);
 	}
+	/**
+	 * The action at each monster turn
+	 */
 	public abstract void action();
+	/**
+	 * Update Hp of monster
+	 */
 	public void updateHp() {
 		double hps = this.hp;
-		this.monster_hp_bar_progress.setProgress(hps/this.hp_max);
-		this.monster_hp_bar.setGraphic(this.monster_hp_bar_progress);
-		this.monster_hp_bar.setContentDisplay(ContentDisplay.CENTER);
+		
 		//this.monster_hp_bar.setPadding(new Insets(5));
-		this.monster_hp_bar.setText( Integer.toString(this.hp)+"/"+Integer.toString(this.hp_max) );
+		Platform.runLater(()->{
+			this.monster_hp_bar_progress.setProgress(hps/this.hp_max);
+			this.monster_hp_bar.setGraphic(this.monster_hp_bar_progress);
+			this.monster_hp_bar.setContentDisplay(ContentDisplay.CENTER);
+			this.monster_hp_bar.setText( Integer.toString(this.hp)+"/"+Integer.toString(this.hp_max) );
+		});
+		
 	}
 	
 	

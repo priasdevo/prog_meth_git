@@ -1,5 +1,9 @@
 package logicEntities.base;
 
+/**
+ * @author Napat
+ * To be Used
+ */
 public class Affinity {
 	private double fireAffinity;
 	private double waterAffinity;

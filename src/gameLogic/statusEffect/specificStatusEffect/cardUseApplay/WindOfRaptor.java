@@ -1,19 +1,31 @@
 package gameLogic.statusEffect.specificStatusEffect.cardUseApplay;
 
 import gameLogic.statusEffect.CardUseApplyStatusEffect;
+import gameLogic.statusEffect.StatusEffectBase;
+import javafx.application.Platform;
 import logicEntities.base.Card;
 
-public class WindOfRaptor extends CardUseApplyStatusEffect{
+/**
+ * @author Napat
+ * Re use the next card that will be used
+ */
+public class WindOfRaptor extends StatusEffectBase implements CardUseApplyStatusEffect{
 
 	public WindOfRaptor() {
-		super("WindOfRaptor");
+		super(statusType,"Wind of Raptor");
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void Activate(Card cardUsed) {
 		// TODO Auto-generated method stub
-		cardUsed.use();
+		if(this.getStack()>0) {
+			Platform.runLater(()->{
+				cardUsed.use();
+			});
+		}
+		
+		
 		this.setStack(this.getStack()-1);
 	}
 

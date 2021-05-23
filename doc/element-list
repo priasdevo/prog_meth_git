@@ -1,0 +1,17 @@
+application
+gameLogic
+gameLogic.action
+gameLogic.statusEffect
+gameLogic.statusEffect.specificStatusEffect.attackApply
+gameLogic.statusEffect.specificStatusEffect.cardUseApplay
+gameLogic.statusEffect.specificStatusEffect.defenseApply
+gameLogic.statusEffect.specificStatusEffect.takeDamageApply
+logicEntities
+logicEntities.base
+logicEntities.base.cardType
+logicEntities.card
+logicEntities.monsterGroup
+logicEntities.Monsters
+scene
+sceneController
+shareObject

@@ -1,11 +1,12 @@
 package gameLogic.statusEffect.specificStatusEffect.attackApply;
 
 import gameLogic.statusEffect.AttackApplyStatusEffect;
+import gameLogic.statusEffect.StatusEffectBase;
 
-public class MagicAggregation extends AttackApplyStatusEffect{
+public class MagicAggregation extends StatusEffectBase implements AttackApplyStatusEffect{
 
 	public MagicAggregation() {
-		super("MagicAggregation");
+		super(statusType,"MagicAggregation");
 		// TODO Auto-generated constructor stub
 	}
 

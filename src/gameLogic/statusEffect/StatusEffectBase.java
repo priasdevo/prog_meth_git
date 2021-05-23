@@ -1,5 +1,9 @@
 package gameLogic.statusEffect;
 
+/**
+ * @author Napat
+ * The template for all status effect
+ */
 public abstract class StatusEffectBase {
 	/*
 	 * Attack use Appli = 0

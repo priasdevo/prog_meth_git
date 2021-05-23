@@ -1,11 +1,11 @@
 package gameLogic.statusEffect;
 
-public abstract class DefenseApplyStatusEffect extends StatusEffectBase{
-
-	public DefenseApplyStatusEffect(String name) {
-		super(1, name);
-		// TODO Auto-generated constructor stub
-	}
+/**
+ * @author Napat
+ *The statusEffect that activate when defense action is being handle
+ */
+public interface DefenseApplyStatusEffect{
+	static final int statusType = 1;
 	public abstract int getDefenseBonus(int CurrentDefense);
 
 }

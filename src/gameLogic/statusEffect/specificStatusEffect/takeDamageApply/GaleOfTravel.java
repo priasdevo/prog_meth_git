@@ -1,11 +1,16 @@
 package gameLogic.statusEffect.specificStatusEffect.takeDamageApply;
 
+import gameLogic.statusEffect.StatusEffectBase;
 import gameLogic.statusEffect.TakeDamageApplyStatuslEffect;
 
-public class GaleOfTravel extends TakeDamageApplyStatuslEffect{
+/**
+ * @author Napat
+ * Card gale of travel
+ */
+public class GaleOfTravel extends StatusEffectBase implements TakeDamageApplyStatuslEffect{
 
 	public GaleOfTravel() {
-		super("GaleOfTravel");
+		super(statusType,"Gale of Travel");
 		// TODO Auto-generated constructor stub
 	}
 

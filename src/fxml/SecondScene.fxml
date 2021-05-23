@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="rootpane" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sceneController.SecondSceneController">
+<StackPane fx:id="rootpane2" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sceneController.SecondSceneController">
    <children>
       <Canvas fx:id="SecondSceneBackground" height="640.0" width="1024.0" />
       <GridPane fx:id="grid">
@@ -50,8 +50,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox fx:id="cardBox" alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="16" GridPane.rowIndex="10" GridPane.rowSpan="2147483647" />
-            <Button fx:id="endTurnButton" mnemonicParsing="false" onAction="#endTurn" prefHeight="41.0" prefWidth="67.0" text="Button" GridPane.columnIndex="14" GridPane.rowIndex="10">
+            <HBox fx:id="cardBox" alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="16" GridPane.rowIndex="9" GridPane.rowSpan="2147483647" />
+            <Button fx:id="endTurnButton" mnemonicParsing="false" onAction="#endTurn" prefHeight="41.0" prefWidth="67.0" text="End Turn" GridPane.columnIndex="14" GridPane.rowIndex="10">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>

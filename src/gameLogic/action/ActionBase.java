@@ -1,7 +1,19 @@
 package gameLogic.action;
 
+import exception.NoTargetExcaption;
+
+/**
+ * @author Napat
+ * The template for all action
+ */
 public abstract class ActionBase {
+	/**
+	 * The type of target suchas single,all
+	 */
 	protected String targetType;
+	/**
+	 * The Id of Target
+	 */
 	protected String targetId;
 	
 	public ActionBase(String targetType, String targetId) {
@@ -25,5 +37,5 @@ public abstract class ActionBase {
 	public void setTargetId(String targetId) {
 		this.targetId = targetId;
 	}
-	
+	public abstract void Activate() throws NoTargetExcaption;
 }

@@ -15,11 +15,18 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import shareObject.SecondSceneObjectHolder;
+import logicEntities.base.cardType.hasTarget;
+import shareObject.MousePositionPointer;
+import gameLogic.BuffManager;
+import gameLogic.CardManager;
 import gameLogic.GameLogic;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+/**
+ * @author Napat
+ * Init basic property for battle scene
+ */
 public class SecondSceneController {
 	@FXML
 	Canvas SecondSceneBackground;
@@ -31,31 +38,42 @@ public class SecondSceneController {
 	Button endTurnButton;
 	@FXML
 	HBox statBar;
+	/**
+	 * Initialize battle scene
+	 */
 	public void initialize() {
-		System.out.println("Controller bind successfully GIT");
+		//System.out.println("Controller bind successfully GIT");
 		grid.setOnDragOver(e -> {
             e.acceptTransferModes(TransferMode.MOVE);
-            SecondSceneObjectHolder.getInstance().setCurrentX(e.getX());
-            SecondSceneObjectHolder.getInstance().setCurrentY(e.getY());
-            SecondSceneObjectHolder.getInstance().setIsDragging(true);
-            System.out.print(SecondSceneObjectHolder.getInstance().getCardX());
-            System.out.print("   "+SecondSceneObjectHolder.getInstance().getCardY()+"\n");
+            MousePositionPointer.getInstance().setCurrentX(e.getX());
+            MousePositionPointer.getInstance().setCurrentY(e.getY());
+            MousePositionPointer.getInstance().setIsDragging(true);
+            //System.out.print(SecondSceneObjectHolder.getInstance().getCardX());
+            //System.out.print("   "+SecondSceneObjectHolder.getInstance().getCardY()+"\n");
             e.consume();
 	    });
 		grid.setOnDragDropped(new EventHandler<DragEvent>() {
 			@Override
 			public void handle(DragEvent event) {
+				if(!(CardManager.getCurrentCard() instanceof hasTarget)) {
+					GameLogic.addAction(null);
+				}
 				System.out.println("onDragDropped");
-				//event.setDropCompleted(success);
 				event.consume();
 			}
 		});
 		GameLogic.setEndTurnButton(endTurnButton);
 		
 	}
+	/**
+	 * Endturn Action
+	 */
 	public void endTurn() {
-	System.out.println("Endturn");
+		GameLogic.setTurnPass(GameLogic.getTurnPass()+1);
+	//System.out.println("Endturn");
 		endTurnButton.setDisable(true);
+		BuffManager.endTurnChange();
+		BuffManager.updateBuff();
 		GameLogic.endTurn();
 	}
 }

@@ -12,26 +12,21 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import logicEntities.base.Monster;
+/**
+ * @author Napat
+ * Slime monster
+ */
 public class Slime extends Monster{
-	public Slime( String monster_id) {
-		super("Slime", monster_id, 20);
-		// TODO Auto-generated constructor stub
-		this.monster_height = 200 ;
-		this.monster_width = 300 ;
-		this.moster_image = new Image(ClassLoader.getSystemResource("secondScene/images/slime_blank.png").toString());
-		this.monster_ob.setFitHeight(monster_height);
-		this.monster_ob.setFitWidth(monster_width);
-		this.monster_ob.setImage(moster_image);
-	}
-
+	private static final int monster_hp = 20;
+	private static final int attackDamage = 5;
 	public Slime(String monster_id,int posx,int posy) {
-		super("Slime", monster_id, 20);
+		super("Slime", monster_id, monster_hp);
 		// TODO Auto-generated constructor stub
 		this.monster_height = 75 ;
 		this.monster_width = 100 ;
 		this.monster_xpos=posx;
 		this.monster_ypos=posy;
-		this.moster_image = new Image(ClassLoader.getSystemResource("secondScene/images/slime_blank.png").toString());
+		this.moster_image = new Image(ClassLoader.getSystemResource("monsterImage/Slime.png").toString());
 		// TODO Auto-generated constructor stub
 		this.monster_ob.setFitHeight(monster_height);
 		this.monster_ob.setFitWidth(monster_width);
@@ -44,7 +39,7 @@ public class Slime extends Monster{
 	
 	@Override
 	public void action() {
-		GameLogic.getActionManager().add(new AttackAction("Single","Player",5));
+		GameLogic.getActionManager().add(new AttackAction("Single","Player",attackDamage));
 		// TODO Auto-generated method stub
 		
 	}

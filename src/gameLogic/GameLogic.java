@@ -12,6 +12,11 @@ import javafx.scene.layout.HBox;
 import logicEntities.Player;
 import logicEntities.base.Monster;
 import logicEntities.base.cardType.hasTarget;
+import shareObject.StageIndex;
+/**
+ * @author Napat
+ * Class to manage the Game flow
+ */
 public class GameLogic {
 		private static ActionManager actionManager;
 		private static MonsterManager monsterManager;
@@ -21,16 +26,31 @@ public class GameLogic {
 		private static Scene scene;
 		private static Node root;
 		private static Button endTurnButton;
+		private static boolean isActionRunning = false;
+		private static int turnPass = 0;
+		private static int result;
+		private static int round=0;
+		private static int drawEachTurn = 5;
+		/**
+		 * Init the manager
+		 */
 		public static void init() {
 			GameLogic.actionManager = new ActionManager();
 			GameLogic.monsterManager = new MonsterManager();
 			GameLogic.cardManager = new CardManager();
 			Player.getInstance();
 		}
+		/**
+		 * Run the action in queue
+		 */
 		public static void runAction() {
 			actionManager.runAction();
-			
+			BuffManager.updateBuff();
 		}
+		/**
+		 * Add the action to queue
+		 * @param monster the target monster
+		 */
 		public static void addAction(Monster monster) {
 			GameLogic.getCardManager();
 			if(CardManager.getCurrentCard() instanceof hasTarget) {
@@ -38,16 +58,28 @@ public class GameLogic {
 			}
 			CardManager.getCurrentCard().use();
 		}
+		/**
+		 * End turn
+		 */
 		public static void endTurn() {
 			CardManager.discard_all();
 			GameLogic.getMonsterManager().monsterAction();
 			System.out.println("monster_attack");
+			Player.getInstance().setMana(Player.getInstance().getMana_max());
 			// Start New Turn
-			
-			GameLogic.getCardManager().draw(5);
+
+			GameLogic.getCardManager().draw(GameLogic.drawEachTurn);
 			endTurnButton.setDisable(false);
 		}
-		
+		/**
+		 * Start transitionScene (Winlose Screen)
+		 * @param result
+		 */
+		public static void gameTransition(int result) {
+			// 0 = lose , 1 = win
+			GameLogic.setResult(result);
+			StageIndex.getInstance().setstageIndex(StageIndex.Transition);
+		}
 		
 		public static ActionManager getActionManager() {
 			return actionManager;
@@ -96,6 +128,30 @@ public class GameLogic {
 		}
 		public static void setEndTurnButton(Button endTurnButton) {
 			GameLogic.endTurnButton = endTurnButton;
+		}
+		public static boolean isActionRunning() {
+			return isActionRunning;
+		}
+		public static void setActionRunning(boolean isActionRunning) {
+			GameLogic.isActionRunning = isActionRunning;
+		}
+		public static int getTurnPass() {
+			return turnPass;
+		}
+		public static void setTurnPass(int turnPass) {
+			GameLogic.turnPass = turnPass;
+		}
+		public static int getResult() {
+			return result;
+		}
+		public static void setResult(int result) {
+			GameLogic.result = result;
+		}
+		public static int getRound() {
+			return round;
+		}
+		public static void setRound(int round) {
+			GameLogic.round = round;
 		}
 		
 		
